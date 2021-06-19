@@ -1,1 +1,0 @@
-# XWS-Agent-Application Client Side
