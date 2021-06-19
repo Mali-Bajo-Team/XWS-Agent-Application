@@ -1,1 +1,1 @@
-# XWS-Agent-Application
+# XWS AgentApplication
