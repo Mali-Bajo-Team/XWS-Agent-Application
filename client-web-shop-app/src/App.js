@@ -1,10 +1,10 @@
-import Navbar from './Navbar';
-import Home from './Home';
+import Navbar from './components/Navbar';
+import Home from './pages/guest/Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Products from './Products';
-import ProductDetails from './ProductDetails';
-import CreateProduct from './CreateProduct';
-import SignUp from './SignUp';
+import Products from './pages/administrator/Products'
+import ProductDetails from './containers/Product/ProductDetails';
+import CreateProduct from './containers/Product/CreateProduct';
+import SignUp from './pages/guest/SignUp';
 
 function App() {
 

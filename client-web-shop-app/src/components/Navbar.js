@@ -11,7 +11,8 @@ const Navbar = () => {
                 <Link to="/signup" style={{
                     color: "white",
                     backgroundColor: '#22ad9a',
-                    borderRadius: '0.8em'
+                    borderRadius: '2em',
+                    padding: '0.8em'
                 }}>Sign Up</Link>
             </div>
         </nav>
