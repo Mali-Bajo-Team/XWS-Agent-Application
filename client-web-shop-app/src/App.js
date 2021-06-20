@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Products from './Products';
 import ProductDetails from './ProductDetails';
 import CreateProduct from './CreateProduct';
-
+import SignUp from './SignUp';
 
 function App() {
 
@@ -25,6 +25,9 @@ function App() {
             </Route>
             <Route path="/create">
               <CreateProduct />
+            </Route>
+            <Route path="/signup">
+              <SignUp />
             </Route>
           </Switch>
         </div>

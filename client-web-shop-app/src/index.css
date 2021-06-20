@@ -30,7 +30,7 @@
 }
 
 .navbar a:hover {
-  color: #f1356d;
+  color: #22ad9a;
 }
 
 .content {
@@ -59,4 +59,43 @@
 
 .product-preview a {
   text-decoration: none;
+}
+
+/* signup form */
+.signup {
+  max-width : 400px;
+  margin    : 0 auto;
+  text-align: center;
+}
+
+.signup label {
+  text-align: left;
+  display   : block;
+}
+
+.signup h2 {
+  font-size    : 20px;
+  color        : #22ad9a;
+  margin-bottom: 30px;
+}
+
+.signup input,
+.signup textarea,
+.signup select {
+  width        : 100%;
+  padding      : 6px 10px;
+  margin       : 10px 0;
+  border       : 1px solid #ddd;
+  box-sizing   : border-box;
+  display      : block;
+  border-radius: 0.7em;
+}
+
+.signup button {
+  background   : #22ad9a;
+  color        : #fff;
+  border       : 0;
+  padding      : 8px;
+  border-radius: 8px;
+  cursor       : pointer;
 }
