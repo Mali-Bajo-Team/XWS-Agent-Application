@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ProductList from "./components/ProductList";
 
 const Home = () => {
     const [products] = useState([
@@ -9,12 +10,7 @@ const Home = () => {
 
     return (
         <div className="home">
-            {products.map(product => (
-                <div className="product-preview" key={product.id} >
-                    <h2>{product.name}</h2>
-                    <p>Price per product: {product.price} $</p>
-                </div>
-            ))}
+            <ProductList products={products} title="Welcome to the our products page!" />
         </div>
     );
 }
