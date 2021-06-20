@@ -2,49 +2,61 @@
 
 /* base styles */
 * {
-  margin: 0;
+  margin     : 0;
   font-family: "Quicksand";
-  color: #333;
+  color      : #333;
 }
+
 .navbar {
-  padding: 2em;
-  margin: 3em;
-  display: flex;
-  align-items: center;
+  padding      : 2em;
+  margin       : 3em;
+  display      : flex;
+  align-items  : center;
   border-bottom: 1px solid #f2f2f2;
 }
+
 .navbar h1 {
   color: #22ad9a;
 }
+
 .navbar .links {
   margin-left: auto;
 }
+
 .navbar a {
-  margin-left: 16px;
+  margin-left    : 16px;
   text-decoration: none;
-  padding: 6px;
+  padding        : 6px;
 }
+
 .navbar a:hover {
   color: #f1356d;
 }
+
 .content {
   max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
+  margin   : 40px auto;
+  padding  : 20px;
 }
 
 /* product previews / list */
 .product-preview {
-  padding: 10px 16px;
-  margin: 20px 0;
-  border: 1px solid #22ad9a;
+  padding      : 10px 16px;
+  margin       : 20px 0;
+  border       : 1px solid #22ad9a;
   border-radius: 0.8em;
 }
+
 .product-preview:hover {
-  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
 }
+
 .product-preview h2 {
-  font-size: 20px;
-  color: #22ad9a;
+  font-size    : 20px;
+  color        : #22ad9a;
   margin-bottom: 8px;
+}
+
+.product-preview a {
+  text-decoration: none;
 }
