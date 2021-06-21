@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { UserContext } from '../../context/UserContext';
 import { Link } from 'react-router-dom';
+import { login } from '../../service/login';
 
 const Login = () => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+
+	const { user, setUser } = useContext(UserContext);
 
 	return (
 		<div className="customForm">
@@ -26,11 +30,20 @@ const Login = () => {
 				/>
 
 				<div className="authButtons">
-					<button>Login</button>
+					<button
+						onClick={async () => {
+							const tempUser = await login();
+							setUser(tempUser);
+						}}
+					>
+						Login
+					</button>
 					<Link to="/signup">
 						<button> Sign Up </button>
 					</Link>
 				</div>
+
+				<h2>{user ? 'username: ' + user.username : 'username: no user'}</h2>
 			</form>
 		</div>
 	);

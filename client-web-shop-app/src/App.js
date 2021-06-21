@@ -10,15 +10,15 @@ import { UserContext } from './context/UserContext';
 import { useMemo, useState } from 'react';
 
 function App() {
-	const [user, setUser] = useState('hello from use state & context');
+	const [user, setUser] = useState(null);
 	const providerUser = useMemo(() => ({ user, setUser }), [user, setUser]);
 
 	return (
 		<Router>
 			<div className="App">
-				<Navbar />
-				<div className="content">
-					<UserContext.Provider value={providerUser}>
+				<UserContext.Provider value={providerUser}>
+					<Navbar />
+					<div className="content">
 						<Switch>
 							<Route exact path="/">
 								<Home />
@@ -39,8 +39,8 @@ function App() {
 								<Login />
 							</Route>
 						</Switch>
-					</UserContext.Provider>
-				</div>
+					</div>
+				</UserContext.Provider>
 			</div>
 		</Router>
 	);

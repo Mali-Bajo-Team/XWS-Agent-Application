@@ -26,7 +26,18 @@
 .navbar a {
 	margin-left: 16px;
 	text-decoration: none;
-	padding: 6px;
+	padding: 0.7em;
+}
+
+.navbar button {
+	margin-left: 16px;
+	text-decoration: none;
+	padding: 0.9em;
+	color: white;
+	background-color: #22ad9a;
+	border-radius: 2em;
+	border: 1px solid white;
+	cursor: pointer;
 }
 
 .navbar a:hover {
