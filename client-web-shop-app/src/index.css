@@ -92,7 +92,14 @@
 	height: 3.3em;
 }
 
-.customForm button {
+.customForm .authButtons {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 1em;
+	padding: 2em;
+}
+
+.customForm .authButtons button {
 	background: #22ad9a;
 	color: #fff;
 	border: 0;
