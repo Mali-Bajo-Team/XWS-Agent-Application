@@ -51,7 +51,18 @@ const SignUp = () => {
 					onChange={(e) => setPassword(e.target.value)}
 				/>
 
-				<button>Sing Up</button>
+				<button
+					style={{
+						backgroundColor: '#22ad9a',
+						color: '#fff',
+						border: '0',
+						padding: '1em',
+						borderRadius: '1em',
+						cursor: 'pointer',
+					}}
+				>
+					Sing Up
+				</button>
 			</form>
 		</div>
 	);
