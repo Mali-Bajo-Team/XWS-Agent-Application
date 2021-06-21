@@ -2,100 +2,101 @@
 
 /* base styles */
 * {
-  margin     : 0;
-  font-family: "Quicksand";
-  color      : #333;
+	margin: 0;
+	font-family: 'Quicksand';
+	color: #333;
 }
 
 .navbar {
-  padding      : 2em;
-  margin       : 3em;
-  display      : flex;
-  align-items  : center;
-  border-bottom: 1px solid #f2f2f2;
+	padding: 2em;
+	margin: 3em;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #f2f2f2;
 }
 
 .navbar h1 {
-  color: #22ad9a;
+	color: #22ad9a;
 }
 
 .navbar .links {
-  margin-left: auto;
+	margin-left: auto;
 }
 
 .navbar a {
-  margin-left    : 16px;
-  text-decoration: none;
-  padding        : 6px;
+	margin-left: 16px;
+	text-decoration: none;
+	padding: 6px;
 }
 
 .navbar a:hover {
-  color: #22ad9a;
+	color: #22ad9a;
 }
 
 .content {
-  max-width: 600px;
-  margin   : 40px auto;
-  padding  : 20px;
+	max-width: 600px;
+	margin: 40px auto;
+	padding: 20px;
 }
 
 /* product previews / list */
 .product-preview {
-  padding      : 10px 16px;
-  margin       : 20px 0;
-  border       : 1px solid #22ad9a;
-  border-radius: 0.8em;
+	padding: 10px 16px;
+	margin: 20px 0;
+	border: 1px solid #22ad9a;
+	border-radius: 0.8em;
 }
 
 .product-preview:hover {
-  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 .product-preview h2 {
-  font-size    : 20px;
-  color        : #22ad9a;
-  margin-bottom: 8px;
+	font-size: 20px;
+	color: #22ad9a;
+	margin-bottom: 8px;
 }
 
 .product-preview a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
-/* signup form */
-.signup {
-  max-width : 400px;
-  margin    : 0 auto;
-  text-align: center;
+/* customForm form */
+.customForm {
+	max-width: 400px;
+	margin: 0 auto;
+	text-align: center;
 }
 
-.signup label {
-  text-align: left;
-  display   : block;
+.customForm label {
+	text-align: left;
+	display: block;
 }
 
-.signup h2 {
-  font-size    : 20px;
-  color        : #22ad9a;
-  margin-bottom: 30px;
+.customForm h2 {
+	font-size: 20px;
+	color: #22ad9a;
+	margin-bottom: 30px;
 }
 
-.signup input,
-.signup textarea,
-.signup select {
-  width        : 100%;
-  padding      : 6px 10px;
-  margin       : 10px 0;
-  border       : 1px solid #ddd;
-  box-sizing   : border-box;
-  display      : block;
-  border-radius: 0.7em;
+.customForm input,
+.customForm textarea,
+.customForm select {
+	width: 100%;
+	padding: 6px 10px;
+	margin: 10px 0;
+	border: 1px solid #ddd;
+	box-sizing: border-box;
+	display: block;
+	border-radius: 0.7em;
+	height: 3.3em;
 }
 
-.signup button {
-  background   : #22ad9a;
-  color        : #fff;
-  border       : 0;
-  padding      : 1em;
-  border-radius: 1em;
-  cursor       : pointer;
+.customForm button {
+	background: #22ad9a;
+	color: #fff;
+	border: 0;
+	padding: 1em;
+	border-radius: 1em;
+	cursor: pointer;
 }
