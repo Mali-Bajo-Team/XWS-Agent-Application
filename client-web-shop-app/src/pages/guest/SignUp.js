@@ -61,7 +61,7 @@ const SignUp = () => {
 						cursor: 'pointer',
 					}}
 				>
-					Sing Up
+					Sign Up
 				</button>
 			</form>
 		</div>
