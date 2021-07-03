@@ -10,6 +10,7 @@ import { UserContext } from '../../../modules/Auth/context/UserContext';
 import { useMemo, useState } from 'react';
 import './OurRouter.modules.css';
 import EditProduct from '../../../modules/Product/components/molecules/EditProduct/EditProduct';
+import BuyProduct from '../../../modules/Product/components/molecules/BuyProduct/BuyProduct';
 
 const OurRouter = () => {
 	const [user, setUser] = useState(null);
@@ -34,10 +35,12 @@ const OurRouter = () => {
 							<Route exact path="/products/edit/:id">
 								<EditProduct />
 							</Route>
+							<Route exact path="/products/buy/:id">
+								<BuyProduct />
+							</Route>
 							<Route path="/products/:id">
 								<ProductDetails />
 							</Route>
-
 							<Route path="/signup">
 								<SignUp />
 							</Route>
