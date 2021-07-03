@@ -9,12 +9,29 @@
 	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
-.product-preview h2 {
-	font-size: 20px;
-	color: #22ad9a;
-	margin-bottom: 8px;
-}
-
 .product-preview a {
 	text-decoration: none;
+}
+
+/* add to the cart */
+.headerWithAddToCart {
+	display: grid;
+	grid-template-columns: 90% 10%;
+	gap: 1em;
+}
+
+.headerWithAddToCart h3 {
+	font-size: 20px;
+	color: #22ad9a;
+}
+
+.headerWithAddToCart button {
+	color: rgb(255, 255, 255);
+	border-radius: 7em;
+	background-color: #22ad9a;
+	border: 1px solid white;
+	width: 1.8em;
+	font-size: 20px;
+	font-weight: bold;
+	cursor: pointer;
 }
