@@ -1,17 +1,25 @@
-import { Link } from 'react-router-dom';
 import './ProductList.modules.css';
+import Product from '../../atoms/Product';
+import { useState } from 'react';
 
-const ProductList = ({ products, title }) => {
+const ProductList = ({ title }) => {
+	const [products] = useState([
+		{ name: 'Omeksivac', price: 15, availability: 10, pathToImage: '', id: 1 },
+		{
+			name: 'Omlet lepinja',
+			price: 20,
+			availability: 3,
+			pathToImage: '',
+			id: 2,
+		},
+		{ name: 'Sta god', price: 10, availability: 0, pathToImage: '', id: 3 },
+	]);
+
 	return (
 		<div className="product-list">
 			<h3>{title}</h3>
 			{products.map((product) => (
-				<div className="product-preview" key={product.id}>
-					<Link to={`/products/${product.id}`}>
-						<h2>{product.name}</h2>
-						<p>Price per product: {product.price} $</p>
-					</Link>
-				</div>
+				<Product key={product.id} product={product} />
 			))}
 		</div>
 	);
