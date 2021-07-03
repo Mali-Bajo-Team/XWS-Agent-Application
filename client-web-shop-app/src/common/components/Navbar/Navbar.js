@@ -12,7 +12,11 @@ const Navbar = () => {
 			<div className="links">
 				<Link to="/">Home</Link>
 				{user && <Link to="/products">Products</Link>}
-				{user && <Link to="/cart">Shoping Cart</Link>}
+				{user && user.role == 'user' ? (
+					<Link to="/cart">Shoping Cart</Link>
+				) : (
+					''
+				)}
 				{user ? (
 					<Link
 						to="/"
