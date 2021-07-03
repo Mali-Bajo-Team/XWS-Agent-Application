@@ -15,7 +15,7 @@ const Navbar = () => {
 				{user ? (
 					<Link
 						to="/"
-						className="test"
+						className="authBtn"
 						onClick={() => {
 							// Todo: Call real log out
 							setUser(null);
@@ -25,7 +25,7 @@ const Navbar = () => {
 						Logout
 					</Link>
 				) : (
-					<Link to="/login" className="test">
+					<Link to="/login" className="authBtn">
 						Login
 					</Link>
 				)}
