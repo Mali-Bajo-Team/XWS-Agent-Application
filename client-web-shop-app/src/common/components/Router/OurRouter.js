@@ -9,6 +9,7 @@ import Login from '../../../modules/Auth/components/organisms/Login/Login';
 import { UserContext } from '../../../modules/Auth/context/UserContext';
 import { useMemo, useState } from 'react';
 import './OurRouter.modules.css';
+import EditProduct from '../../../modules/Product/components/molecules/EditProduct/EditProduct';
 
 const OurRouter = () => {
 	const [user, setUser] = useState(null);
@@ -27,12 +28,16 @@ const OurRouter = () => {
 							<Route exact path="/products">
 								<Products />
 							</Route>
+							<Route exact path="/products/create">
+								<CreateProduct />
+							</Route>
+							<Route exact path="/products/edit/:id">
+								<EditProduct />
+							</Route>
 							<Route path="/products/:id">
 								<ProductDetails />
 							</Route>
-							<Route path="/create">
-								<CreateProduct />
-							</Route>
+
 							<Route path="/signup">
 								<SignUp />
 							</Route>
