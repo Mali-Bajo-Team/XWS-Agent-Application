@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './SignUp.modules.css';
 
 const SignUp = () => {
 	const [username, setUsername] = useState('');

@@ -1,4 +1,4 @@
-import OurRouter from './modules/Auth/components/Router/OurRouter';
+import OurRouter from './modules/Auth/components/organisms/Router/OurRouter';
 
 function App() {
 	return <OurRouter />;

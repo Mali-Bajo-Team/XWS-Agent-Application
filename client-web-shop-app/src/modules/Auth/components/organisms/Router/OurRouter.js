@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from '../../../../common/components/Navbar/Navbar';
+import Navbar from '../../../../../common/components/Navbar/Navbar';
 // TODO: Napisati komponentu za welcome
-import Home from '../../../../pages/guest/Home';
-import Products from '../../../../pages/administrator/Products';
-import ProductDetails from '../../../Product/components/organisms/ProductDetails/ProductDetails';
-import CreateProduct from '../../../Product/components/molecules/CreateProduct/CreateProduct';
-import SignUp from '../../../../pages/guest/SignUp';
-import Login from '../../../../pages/guest/Login';
-import { UserContext } from '../../../../common/context/UserContext';
+import Home from '../../../../../pages/guest/Home';
+import Products from '../../../../../pages/administrator/Products';
+import ProductDetails from '../../../../Product/components/organisms/ProductDetails/ProductDetails';
+import CreateProduct from '../../../../Product/components/molecules/CreateProduct/CreateProduct';
+import SignUp from '../SignUp/SignUp';
+import Login from '../Login/Login';
+import { UserContext } from '../../../context/UserContext';
 import { useMemo, useState } from 'react';
 import './OurRouter.modules.css';
 
