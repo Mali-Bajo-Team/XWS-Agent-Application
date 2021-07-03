@@ -13,25 +13,19 @@ const Navbar = () => {
 				<Link to="/">Home</Link>
 				{user && <Link to="/products">Products</Link>}
 				{user ? (
-					<button
+					<Link
+						to="/"
+						className="test"
 						onClick={() => {
 							// Todo: Call real log out
 							setUser(null);
+							console.log('log out simulation');
 						}}
 					>
 						Logout
-					</button>
+					</Link>
 				) : (
-					<Link
-						to="/login"
-						style={{
-							color: 'white',
-							backgroundColor: '#22ad9a',
-							borderRadius: '2em',
-							border: '1px solid white',
-							padding: '0.7em',
-						}}
-					>
+					<Link to="/login" className="test">
 						Login
 					</Link>
 				)}

@@ -15,14 +15,18 @@
 }
 
 .navbar a {
+	display: inline-block;
+	text-align: center;
+	font-size: 14px;
 	margin-left: 16px;
 	text-decoration: none;
 	padding: 0.7em;
 }
 
-.navbar button {
+.test {
 	margin-left: 16px;
 	text-decoration: none;
+	min-width: 65px;
 	padding: 0.9em;
 	color: white;
 	background-color: #22ad9a;

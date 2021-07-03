@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { UserContext } from '../../../context/UserContext';
 import { Link } from 'react-router-dom';
-import { login } from '../../../../../service/login';
+import { login } from '../../../service/login';
 
 const Login = () => {
 	const [username, setUsername] = useState('');
