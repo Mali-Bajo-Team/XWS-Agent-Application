@@ -11,6 +11,7 @@ import { useMemo, useState } from 'react';
 import './OurRouter.modules.css';
 import EditProduct from '../../../modules/Product/components/molecules/EditProduct/EditProduct';
 import BuyProduct from '../../../modules/Product/components/molecules/BuyProduct/BuyProduct';
+import ShopingCart from '../../../modules/ShopingCart/ShopingCart';
 
 const OurRouter = () => {
 	const [user, setUser] = useState(null);
@@ -40,6 +41,9 @@ const OurRouter = () => {
 							</Route>
 							<Route path="/products/:id">
 								<ProductDetails />
+							</Route>
+							<Route exact path="/cart">
+								<ShopingCart />
 							</Route>
 							<Route path="/signup">
 								<SignUp />
