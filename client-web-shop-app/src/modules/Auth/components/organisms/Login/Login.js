@@ -32,12 +32,14 @@ const Login = () => {
 
 				<div className="authButtons">
 					<button
+
 						onClick={async (e) => {
 							e.preventDefault();
 							var loggedUser = await login(email, password);	
 							var decodedToken = jwt_decode(loggedUser.access_token);
 							var parsedLoggedUser = decodedToken.user;
-							setUser(parsedLoggedUser);	
+						 	setUser(parsedLoggedUser);	
+              localStorage.setItem('loggedUser', JSON.stringify(parsedLoggedUser));
 						}}
 					>
 						Login

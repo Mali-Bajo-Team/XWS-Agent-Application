@@ -22,7 +22,7 @@ const Product = ({ product }) => {
 							state: product,
 						}}
 					>
-						E
+						/
 					</Link>
 				) : (
 					''
@@ -33,7 +33,7 @@ const Product = ({ product }) => {
 							console.log('delete simulation');
 						}}
 					>
-						D
+						X
 					</button>
 				) : (
 					''
