@@ -16,7 +16,11 @@ const Product = ({ product }) => {
 						onClick={() => {
 							console.log('edit simulation');
 						}}
-						to={`/products/edit/${product.id}`}
+						// to={`/products/edit/${product.id}`}
+						to={{
+							pathname: '/products/edit',
+							state: product,
+						}}
 					>
 						E
 					</Link>

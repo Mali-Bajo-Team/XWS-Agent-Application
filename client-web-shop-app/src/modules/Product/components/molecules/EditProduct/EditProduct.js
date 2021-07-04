@@ -1,11 +1,12 @@
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const EditProduct = () => {
-	const { id } = useParams();
+	const { state } = useLocation();
 
 	return (
 		<div>
-			<h1> Edit a product number {id} </h1>
+			{console.log(state)}
+			<h1> Edit a product number</h1>
 		</div>
 	);
 };

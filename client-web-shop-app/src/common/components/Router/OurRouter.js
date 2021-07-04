@@ -32,7 +32,7 @@ const OurRouter = () => {
 							<Route exact path="/products/create">
 								<CreateProduct />
 							</Route>
-							<Route exact path="/products/edit/:id">
+							<Route exact path="/products/edit">
 								<EditProduct />
 							</Route>
 							<Route path="/products/:id">
