@@ -1,14 +1,16 @@
 import { useContext, useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+
 import { UserContext } from '../../../context/UserContext';
 import { Link } from 'react-router-dom';
 import { login } from '../../../service/login';
-import jwt_decode from "jwt-decode";
+import jwt_decode from 'jwt-decode';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
-	const { user, setUser } = useContext(UserContext);
+	const { setUser } = useContext(UserContext);
 
 	return (
 		<div className="customForm">
@@ -32,14 +34,16 @@ const Login = () => {
 
 				<div className="authButtons">
 					<button
-
 						onClick={async (e) => {
 							e.preventDefault();
-							var loggedUser = await login(email, password);	
+							var loggedUser = await login(email, password);
 							var decodedToken = jwt_decode(loggedUser.access_token);
 							var parsedLoggedUser = decodedToken.user;
-						 	setUser(parsedLoggedUser);	
-            			    localStorage.setItem('loggedUser', JSON.stringify(parsedLoggedUser));
+							setUser(parsedLoggedUser);
+							localStorage.setItem(
+								'loggedUser',
+								JSON.stringify(parsedLoggedUser)
+							);
 						}}
 					>
 						Login
@@ -48,9 +52,8 @@ const Login = () => {
 						<button> Sign Up </button>
 					</Link>
 				</div>
-
-				<h2>{user ? 'Email: ' + user.email : 'email: no user'}</h2>
 			</form>
+			<ToastContainer />
 		</div>
 	);
 };

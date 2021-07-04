@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './SignUp.modules.css';
 import { signUp } from '../../../service/signup';
+import { ToastContainer } from 'react-toastify';
 
 const SignUp = () => {
 	const [username, setUsername] = useState('');
@@ -56,10 +57,15 @@ const SignUp = () => {
 				<button
 					onClick={async (e) => {
 						e.preventDefault();
-						var registredUser = await signUp(username, name, email, surname, password);	
+						var registredUser = await signUp(
+							username,
+							name,
+							email,
+							surname,
+							password
+						);
 						console.log(registredUser);
 					}}
-	
 					style={{
 						backgroundColor: '#22ad9a',
 						color: '#fff',
@@ -68,10 +74,11 @@ const SignUp = () => {
 						borderRadius: '1em',
 						cursor: 'pointer',
 					}}
-					>
+				>
 					Sign Up
 				</button>
 			</form>
+			<ToastContainer />
 		</div>
 	);
 };
