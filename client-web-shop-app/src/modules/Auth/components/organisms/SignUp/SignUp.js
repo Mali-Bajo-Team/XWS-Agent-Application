@@ -75,6 +75,7 @@ const SignUp = () => {
 							surname,
 							password
 						);
+						console.log(registredUser);
 					}}
 					style={{
 						backgroundColor: '#22ad9a',

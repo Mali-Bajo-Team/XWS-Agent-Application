@@ -1,23 +1,20 @@
-import { useMemo, useState, createContext } from 'react';
+import { useMemo, useState, createContext, useEffect } from 'react';
 
 export const ProductsContext = createContext();
 
 const ProductsContextProvider = ({ children }) => {
-	const [products, setProducts] = useState([
-		{ name: 'Omeksivac', price: 15, availability: 10, pathToImage: '', id: 1 },
-		{
-			name: 'Omlet lepinja',
-			price: 20,
-			availability: 3,
-			pathToImage: '',
-			id: 2,
-		},
-		{ name: 'Jabuka', price: 10, availability: 0, pathToImage: '', id: 3 },
-	]);
+	let tempProducts = localStorage.getItem('products');
+	const [products, setProducts] = useState(
+		tempProducts ? JSON.parse(tempProducts) : []
+	);
 	const providerProducts = useMemo(
 		() => ({ products, setProducts }),
 		[products, setProducts]
 	);
+
+	useEffect(() => {
+		localStorage.setItem('products', JSON.stringify(products));
+	}, [products]);
 
 	return (
 		<ProductsContext.Provider value={providerProducts}>
