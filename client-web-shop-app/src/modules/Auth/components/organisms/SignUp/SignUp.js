@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './SignUp.modules.css';
 import { signUp } from '../../../service/signup';
 import { ToastContainer } from 'react-toastify';
+import { warningToast } from '../../../../../common/toasts/warning';
 
 const SignUp = () => {
 	const [username, setUsername] = useState('');
@@ -57,6 +58,16 @@ const SignUp = () => {
 				<button
 					onClick={async (e) => {
 						e.preventDefault();
+						if (
+							username === '' ||
+							name === '' ||
+							email === '' ||
+							surname === '' ||
+							password === ''
+						) {
+							warningToast('All fields must have value !');
+							return;
+						}
 						var registredUser = await signUp(
 							username,
 							name,
@@ -64,7 +75,6 @@ const SignUp = () => {
 							surname,
 							password
 						);
-						console.log(registredUser);
 					}}
 					style={{
 						backgroundColor: '#22ad9a',

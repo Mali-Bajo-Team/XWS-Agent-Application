@@ -12,7 +12,7 @@ export async function login(email, password) {
 			})
 			.then(function (response) {
 				resolve(response.data);
-				successToast('Sucess sign in, go and log in!');
+				successToast('Sucess login, go and buy some products!');
 			})
 			.catch(function () {
 				errorToast('Error, your credentials are wrong!');
