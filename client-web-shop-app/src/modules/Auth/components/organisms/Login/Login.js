@@ -39,7 +39,7 @@ const Login = () => {
 							var decodedToken = jwt_decode(loggedUser.access_token);
 							var parsedLoggedUser = decodedToken.user;
 						 	setUser(parsedLoggedUser);	
-              localStorage.setItem('loggedUser', JSON.stringify(parsedLoggedUser));
+            			    localStorage.setItem('loggedUser', JSON.stringify(parsedLoggedUser));
 						}}
 					>
 						Login
