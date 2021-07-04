@@ -2,9 +2,10 @@ import { useContext, useState } from 'react';
 import { UserContext } from '../../../context/UserContext';
 import { Link } from 'react-router-dom';
 import { login } from '../../../service/login';
+import jwt_decode from "jwt-decode";
 
 const Login = () => {
-	const [username, setUsername] = useState('');
+	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
 	const { user, setUser } = useContext(UserContext);
@@ -13,12 +14,12 @@ const Login = () => {
 		<div className="customForm">
 			<h2>Welcome, login to continue!</h2>
 			<form>
-				<label>Username:</label>
+				<label>Email:</label>
 				<input
 					type="text"
 					required
-					value={username}
-					onChange={(e) => setUsername(e.target.value)}
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
 				/>
 
 				<label>Password:</label>
@@ -31,10 +32,14 @@ const Login = () => {
 
 				<div className="authButtons">
 					<button
-						onClick={async () => {
-							const tempUser = await login();
-							localStorage.setItem('loggedUser', JSON.stringify(tempUser));
-							setUser(tempUser);
+
+						onClick={async (e) => {
+							e.preventDefault();
+							var loggedUser = await login(email, password);	
+							var decodedToken = jwt_decode(loggedUser.access_token);
+							var parsedLoggedUser = decodedToken.user;
+						 	setUser(parsedLoggedUser);	
+            			    localStorage.setItem('loggedUser', JSON.stringify(parsedLoggedUser));
 						}}
 					>
 						Login
@@ -44,7 +49,7 @@ const Login = () => {
 					</Link>
 				</div>
 
-				<h2>{user ? 'username: ' + user.username : 'username: no user'}</h2>
+				<h2>{user ? 'Email: ' + user.email : 'email: no user'}</h2>
 			</form>
 		</div>
 	);
