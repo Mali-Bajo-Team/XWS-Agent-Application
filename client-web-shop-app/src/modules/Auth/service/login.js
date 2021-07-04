@@ -10,11 +10,11 @@ export async function login(email, password) {
 				email: email,
 				password: password,
 			})
-			.then(function (response) {
+			.then((response) => {
 				resolve(response.data);
 				successToast('Sucess login, go and buy some products!');
 			})
-			.catch(function () {
+			.catch(() => {
 				errorToast('Error, your credentials are wrong!');
 			});
 	});
