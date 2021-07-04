@@ -8,8 +8,6 @@ import { ProductModule } from './product/product.module';
 import { AuthModule } from './auth/auth.module';
 import { ServeStaticModule } from '@nestjs/serve-static/dist/serve-static.module';
 import { join } from 'path';
-import { ProductController } from './product/controller/product.controller';
-import { ProductService } from './product/service/product.service';
 
 @Module({
   imports: [
@@ -26,10 +24,10 @@ import { ProductService } from './product/service/product.service';
       password: 'bajo'
     }),
     UserModule,
-    ProductModule,
     AuthModule,
+    ProductModule
   ],
-  controllers: [AppController, ProductController],
-  providers: [AppService, ProductService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
