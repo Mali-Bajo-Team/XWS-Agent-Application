@@ -1,0 +1,45 @@
+.newProductForm {
+	max-width: 600px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.newProductForm label {
+	text-align: left;
+	display: block;
+}
+
+.newProductForm h2 {
+	font-size: 20px;
+	color: #22ad9a;
+	margin-bottom: 30px;
+}
+
+.newProductForm input,
+.newProductForm textarea,
+.newProductForm select {
+	width: 100%;
+	padding: 6px 10px;
+	margin: 10px 0;
+	border: 1px solid #ddd;
+	box-sizing: border-box;
+	display: block;
+	border-radius: 0.7em;
+	height: 3.3em;
+}
+.buttonsSection {
+	text-align: center;
+	padding: 2em;
+}
+.buttonsSection .createProductBtn {
+	background-color: #22ad9a;
+	border-radius: 3em;
+	border: 1px solid white;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+	text-align: -webkit-center;
+	text-decoration: none;
+	height: 3em;
+	width: 9em;
+}
