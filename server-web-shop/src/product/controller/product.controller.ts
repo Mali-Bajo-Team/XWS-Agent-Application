@@ -33,6 +33,11 @@ export class ProductController {
     return this.productService.findOne(params.id);
   }
 
+  @Get()
+  findAll(): Observable<Product[]> {
+    return this.productService.findAll();
+  }
+
   @hasRoles(UserRole.ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':id')

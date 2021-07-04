@@ -34,6 +34,12 @@ export class ProductService {
     );
   }
 
+  findAll(): Observable<Product[]> {
+    return from(this.productRepository.find()).pipe(
+      map((products: Product[]) => products),
+    );
+  }
+
   deleteOne(id: number): Observable<any> {
     return from(this.productRepository.delete(id));
   }
