@@ -33,7 +33,8 @@ const CreateProduct = () => {
 				<div className="buttonsSection">
 					<button
 						className="createProductBtn"
-						onClick={() => {
+						onClick={(e) => {
+							e.preventDefault();
 							console.log('create product simulation');
 						}}
 					>
