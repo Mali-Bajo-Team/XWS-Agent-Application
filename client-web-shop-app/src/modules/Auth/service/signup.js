@@ -13,11 +13,11 @@ export async function signUp(username, name, email, surname, password) {
 				password: password,
 				role: 'user',
 			})
-			.then(function (response) {
+			.then((response) => {
 				resolve(response.data);
 				successToast('Sucess sign in, go and log in!');
 			})
-			.catch(function (error) {
+			.catch((error) => {
 				console.log(error);
 				errorToast('Error during sing up !');
 			});
