@@ -6,20 +6,16 @@ import ProductDetails from '../../../modules/Product/components/organisms/Produc
 import CreateProduct from '../../../modules/Product/components/molecules/CreateProduct/CreateProduct';
 import SignUp from '../../../modules/Auth/components/organisms/SignUp/SignUp';
 import Login from '../../../modules/Auth/components/organisms/Login/Login';
-import { UserContext } from '../../../modules/Auth/context/UserContext';
-import { useMemo, useState } from 'react';
+import UserContextProvider from '../../../modules/Auth/context/UserContext';
 import './OurRouter.modules.css';
 import EditProduct from '../../../modules/Product/components/molecules/EditProduct/EditProduct';
 import ShopingCart from '../../../modules/ShopingCart/ShopingCart';
 
 const OurRouter = () => {
-	const [user, setUser] = useState(null);
-	const providerUser = useMemo(() => ({ user, setUser }), [user, setUser]);
-
 	return (
 		<Router>
 			<div className="App">
-				<UserContext.Provider value={providerUser}>
+				<UserContextProvider>
 					<Navbar />
 					<div className="content">
 						<Switch>
@@ -49,7 +45,7 @@ const OurRouter = () => {
 							</Route>
 						</Switch>
 					</div>
-				</UserContext.Provider>
+				</UserContextProvider>
 			</div>
 		</Router>
 	);
