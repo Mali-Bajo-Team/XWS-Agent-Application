@@ -1,10 +1,10 @@
 import { useContext, useState } from 'react';
 import { UserContext } from '../../../context/UserContext';
 import { Link } from 'react-router-dom';
-import { login } from '../../../service/login';
+import { login, firstFunction } from '../../../service/login';
 
 const Login = () => {
-	const [username, setUsername] = useState('');
+	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
 	const { user, setUser } = useContext(UserContext);
@@ -13,12 +13,12 @@ const Login = () => {
 		<div className="customForm">
 			<h2>Welcome, login to continue!</h2>
 			<form>
-				<label>Username:</label>
+				<label>Email:</label>
 				<input
 					type="text"
 					required
-					value={username}
-					onChange={(e) => setUsername(e.target.value)}
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
 				/>
 
 				<label>Password:</label>
@@ -31,9 +31,10 @@ const Login = () => {
 
 				<div className="authButtons">
 					<button
-						onClick={async () => {
-							const tempUser = await login();
-							setUser(tempUser);
+						onClick={async (e) => {
+							e.preventDefault();
+							var user = await login(email, password);	
+							setUser(user);		
 						}}
 					>
 						Login
@@ -43,7 +44,7 @@ const Login = () => {
 					</Link>
 				</div>
 
-				<h2>{user ? 'username: ' + user.username : 'username: no user'}</h2>
+				<h2>{user ? 'Email: ' + user.email : 'email: no user'}</h2>
 			</form>
 		</div>
 	);
