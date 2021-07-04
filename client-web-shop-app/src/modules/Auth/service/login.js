@@ -1,23 +1,21 @@
 const axios = require('axios');
 
 export const login = async () => {
-	axios.get('http://localhost:3000/api/users/4')
- 		 .then(function (response) {
-    // handle success
-    	console.log(response);
- 	 })
- 	 .catch(function (error) {
-    	// handle error
-     console.log(error);
-  	})
-  	.then(function () {
-  	  // always executed
- 	 });
+	axios.post('http://localhost:3000/api/users/login', {
+		email: 'admin@gmail.com',
+		password: '12345'
+	  })
+	  .then(function (response) {
+		console.log(response);
+	  })
+	  .catch(function (error) {
+		console.log(error);
+	  });
 
-	return {
-		id: 4,
-		username: 'bob',
-		email: 'bob@bob.com',
-		role: 'admin',
-	};
+	// return {
+	// 	id: 4,
+	// 	username: 'bob',
+	// 	email: 'bob@bob.com',
+	// 	role: 'admin',
+	// };
 };
