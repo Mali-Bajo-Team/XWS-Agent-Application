@@ -34,6 +34,10 @@ const Product = ({ product }) => {
 				) : (
 					''
 				)}
+				{
+					/* just to move button to the right */
+					user.role === 'user' ? <div></div> : ''
+				}
 				{user.role === 'user' ? (
 					<button
 						onClick={() => {

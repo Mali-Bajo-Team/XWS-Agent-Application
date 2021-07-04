@@ -22,7 +22,7 @@ const ProductList = ({ title }) => {
 		<div>
 			<div className="titleAndNewProduct">
 				<h3>{title}</h3>
-				{user.role === 'user' ? (
+				{user.role === 'admin' ? (
 					<Link
 						onClick={() => {
 							console.log('new product simulation');
