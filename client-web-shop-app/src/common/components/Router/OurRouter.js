@@ -7,6 +7,7 @@ import CreateProduct from '../../../modules/Product/components/molecules/CreateP
 import SignUp from '../../../modules/Auth/components/organisms/SignUp/SignUp';
 import Login from '../../../modules/Auth/components/organisms/Login/Login';
 import UserContextProvider from '../../../modules/Auth/context/UserContext';
+import ProductsContextProvider from '../../../modules/Product/context/ProductsContext';
 import './OurRouter.modules.css';
 import EditProduct from '../../../modules/Product/components/molecules/EditProduct/EditProduct';
 import ShopingCart from '../../../modules/ShopingCart/ShopingCart';
@@ -16,35 +17,37 @@ const OurRouter = () => {
 		<Router>
 			<div className="App">
 				<UserContextProvider>
-					<Navbar />
-					<div className="content">
-						<Switch>
-							<Route exact path="/">
-								<Home />
-							</Route>
-							<Route exact path="/products">
-								<Products />
-							</Route>
-							<Route exact path="/products/create">
-								<CreateProduct />
-							</Route>
-							<Route exact path="/products/edit">
-								<EditProduct />
-							</Route>
-							<Route path="/products/:id">
-								<ProductDetails />
-							</Route>
-							<Route exact path="/cart">
-								<ShopingCart />
-							</Route>
-							<Route path="/signup">
-								<SignUp />
-							</Route>
-							<Route path="/login">
-								<Login />
-							</Route>
-						</Switch>
-					</div>
+					<ProductsContextProvider>
+						<Navbar />
+						<div className="content">
+							<Switch>
+								<Route exact path="/">
+									<Home />
+								</Route>
+								<Route exact path="/products">
+									<Products />
+								</Route>
+								<Route exact path="/products/create">
+									<CreateProduct />
+								</Route>
+								<Route exact path="/products/edit">
+									<EditProduct />
+								</Route>
+								<Route path="/products/:id">
+									<ProductDetails />
+								</Route>
+								<Route exact path="/cart">
+									<ShopingCart />
+								</Route>
+								<Route path="/signup">
+									<SignUp />
+								</Route>
+								<Route path="/login">
+									<Login />
+								</Route>
+							</Switch>
+						</div>
+					</ProductsContextProvider>
 				</UserContextProvider>
 			</div>
 		</Router>
