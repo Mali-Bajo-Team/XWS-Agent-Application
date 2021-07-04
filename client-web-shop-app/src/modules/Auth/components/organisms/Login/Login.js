@@ -1,7 +1,8 @@
 import { useContext, useState } from 'react';
 import { UserContext } from '../../../context/UserContext';
 import { Link } from 'react-router-dom';
-import { login, firstFunction } from '../../../service/login';
+import { login } from '../../../service/login';
+import jwt_decode from "jwt-decode";
 
 const Login = () => {
 	const [email, setEmail] = useState('');
@@ -34,7 +35,10 @@ const Login = () => {
 						onClick={async (e) => {
 							e.preventDefault();
 							var user = await login(email, password);	
-							setUser(user);		
+							setUser(user);	
+							console.log(user)	
+							var decoded = jwt_decode(user.access_token);
+							console.log(decoded.user.username);
 						}}
 					>
 						Login
