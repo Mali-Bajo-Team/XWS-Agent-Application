@@ -33,6 +33,7 @@ const Login = () => {
 					<button
 						onClick={async () => {
 							const tempUser = await login();
+							localStorage.setItem('loggedUser', JSON.stringify(tempUser));
 							setUser(tempUser);
 						}}
 					>

@@ -22,9 +22,8 @@ const Navbar = () => {
 						to="/"
 						className="authBtn"
 						onClick={() => {
-							// Todo: Call real log out
 							setUser(null);
-							console.log('log out simulation');
+							localStorage.removeItem('loggedUser');
 						}}
 					>
 						Logout
