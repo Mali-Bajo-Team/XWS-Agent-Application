@@ -1,0 +1,19 @@
+.titleAndNewProduct {
+	display: grid;
+	grid-template-columns: 80% 20%;
+}
+.titleAndNewProduct h3 {
+	color: black;
+}
+
+.titleAndNewProduct a {
+	background-color: #22ad9a;
+	border-radius: 3em;
+	border: 1px solid white;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+	text-align: -webkit-center;
+	margin-left: 2em;
+	text-decoration: none;
+}
