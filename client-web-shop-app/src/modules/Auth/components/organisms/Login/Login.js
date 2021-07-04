@@ -34,11 +34,10 @@ const Login = () => {
 					<button
 						onClick={async (e) => {
 							e.preventDefault();
-							var user = await login(email, password);	
-							setUser(user);	
-							console.log(user)	
-							var decoded = jwt_decode(user.access_token);
-							console.log(decoded.user.username);
+							var loggedUser = await login(email, password);	
+							var decodedToken = jwt_decode(loggedUser.access_token);
+							var parsedLoggedUser = decodedToken.user;
+							setUser(parsedLoggedUser);	
 						}}
 					>
 						Login
