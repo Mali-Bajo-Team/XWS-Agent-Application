@@ -16,8 +16,7 @@
 /* add to the cart */
 .headerWithAddToCart {
 	display: grid;
-	grid-template-columns: 90% 10%;
-	gap: 1em;
+	grid-template-columns: 80% 10% 10%;
 }
 
 .headerWithAddToCart h3 {
@@ -25,7 +24,8 @@
 	color: #22ad9a;
 }
 
-.headerWithAddToCart button {
+.headerWithAddToCart button,
+.headerWithAddToCart a {
 	color: rgb(255, 255, 255);
 	border-radius: 7em;
 	background-color: #22ad9a;
@@ -34,4 +34,5 @@
 	font-size: 20px;
 	font-weight: bold;
 	cursor: pointer;
+	text-align: -webkit-center;
 }
