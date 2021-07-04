@@ -21,6 +21,7 @@ export class UserService {
                 const newUser = new UserEntity();
                 newUser.name = user.name;
                 newUser.username = user.username;
+                newUser.surname = user.surname;
                 newUser.email = user.email;
                 newUser.password = passwordHash;
                 newUser.role = user.role;
@@ -85,7 +86,7 @@ export class UserService {
     }
 
     validateUser(email: string, password: string): Observable<User> {
-        return from(this.userRepository.findOne({email}, {select: ['id', 'password', 'name', 'username', 'email', 'role']})).pipe(
+        return from(this.userRepository.findOne({email}, {select: ['id', 'password', 'name', 'username', 'email', 'role', 'surname']})).pipe(
             switchMap((user: User) => this.authService.comparePasswords(password, user.password).pipe(
                 map((match: boolean) => {
                     if(match) {
