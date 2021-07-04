@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import {ConfigModule} from '@nestjs/config';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
+import { ProductModule } from './product/product.module';
 import { AuthModule } from './auth/auth.module';
 import { ServeStaticModule } from '@nestjs/serve-static/dist/serve-static.module';
 import { join } from 'path';
@@ -25,6 +26,7 @@ import { ProductService } from './product/service/product.service';
       password: 'bajo'
     }),
     UserModule,
+    ProductModule,
     AuthModule,
   ],
   controllers: [AppController, ProductController],
