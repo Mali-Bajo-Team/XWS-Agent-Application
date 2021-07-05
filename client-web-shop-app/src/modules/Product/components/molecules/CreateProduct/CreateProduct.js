@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { createNewProduct } from '../../../service/createNewProduct';
 import './CreateProduct.modules.css';
+import { ToastContainer } from 'react-toastify';
+import { ProductsContext } from '../../../context/ProductsContext';
 
 const CreateProduct = () => {
 	const [name, setName] = useState('');
 	const [price, setPrice] = useState('');
 	const [available, setAvailable] = useState('');
+
+	const { products, setProducts } = useContext(ProductsContext);
 	return (
 		<div className="newProductForm">
 			<h2>Hello adminstrator, add a new product.</h2>
@@ -33,8 +38,11 @@ const CreateProduct = () => {
 				<div className="buttonsSection">
 					<button
 						className="createProductBtn"
-						onClick={(e) => {
+						onClick={async (e) => {
 							e.preventDefault();
+							var newProduct = await createNewProduct(name, price, available);
+							setProducts([...products, newProduct]);
+							console.log(newProduct);
 							console.log('create product simulation');
 						}}
 					>
@@ -42,6 +50,7 @@ const CreateProduct = () => {
 					</button>
 				</div>
 			</form>
+			<ToastContainer />
 		</div>
 	);
 };
