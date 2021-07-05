@@ -2,9 +2,13 @@ import './Product.modules.css';
 import { UserContext } from '../../../Auth/context/UserContext';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { deleteProduct } from '../../service/deleteProduct';
+import { ToastContainer } from 'react-toastify';
+import { ProductsContext } from '../../context/ProductsContext';
 
 const Product = ({ product }) => {
 	const { user } = useContext(UserContext);
+	const { products, setProducts } = useContext(ProductsContext);
 
 	return (
 		<div className="product-preview">
@@ -16,7 +20,6 @@ const Product = ({ product }) => {
 						onClick={() => {
 							console.log('edit simulation');
 						}}
-						// to={`/products/edit/${product.id}`}
 						to={{
 							pathname: '/products/edit',
 							state: product,
@@ -29,8 +32,13 @@ const Product = ({ product }) => {
 				)}
 				{user.role === 'admin' ? (
 					<button
-						onClick={() => {
+						onClick={async (e) => {
+							e.preventDefault();
 							console.log('delete simulation');
+							await deleteProduct(product.id, user.jwt);
+							setProducts(
+								products.filter((tempProduct) => tempProduct.id !== product.id)
+							);
 						}}
 					>
 						X
@@ -44,7 +52,7 @@ const Product = ({ product }) => {
 				}
 				{user.role === 'user' ? (
 					<button
-						onClick={() => {
+						onClick={async (e) => {
 							console.log('add to the cart simulation');
 						}}
 					>
@@ -55,6 +63,7 @@ const Product = ({ product }) => {
 				)}
 			</div>
 			<p>Price per product: {product.price} $</p>
+			<ToastContainer />
 		</div>
 	);
 };

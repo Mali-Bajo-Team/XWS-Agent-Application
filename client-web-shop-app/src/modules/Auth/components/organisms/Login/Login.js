@@ -39,6 +39,7 @@ const Login = () => {
 							var loggedUser = await login(email, password);
 							var decodedToken = jwt_decode(loggedUser.access_token);
 							var parsedLoggedUser = decodedToken.user;
+							parsedLoggedUser.jwt = loggedUser.access_token;
 							setUser(parsedLoggedUser);
 							localStorage.setItem(
 								'loggedUser',
