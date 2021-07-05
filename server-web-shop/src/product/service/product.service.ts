@@ -28,7 +28,7 @@ export class ProductService {
   findOne(id: number): Observable<Product> {
     return from(this.productRepository.findOne({ id })).pipe(
       map((product: Product) => {
-        const { name, ...result } = product;
+        const { ...result } = product;
         return result;
       }),
     );
@@ -42,5 +42,11 @@ export class ProductService {
 
   deleteOne(id: number): Observable<any> {
     return from(this.productRepository.delete(id));
+  }
+
+  updateOne(id: number, product: Product): Observable<any> {
+    return from(this.productRepository.update(id, product)).pipe(
+      switchMap(() => this.findOne(id)),
+    );
   }
 }

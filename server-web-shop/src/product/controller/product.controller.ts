@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   Post,
+  Put,
   UseGuards,
 } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
@@ -36,6 +37,16 @@ export class ProductController {
   @Get()
   findAll(): Observable<Product[]> {
     return this.productService.findAll();
+  }
+
+  @hasRoles(UserRole.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Put(':id')
+  updateOne(
+    @Param('id') id: string,
+    @Body() product: Product,
+  ): Observable<any> {
+    return this.productService.updateOne(Number(id), product);
   }
 
   @hasRoles(UserRole.ADMIN)

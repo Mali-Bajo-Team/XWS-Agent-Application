@@ -1,4 +1,13 @@
-import { Controller, Post, Body, Get, Param, Delete, Put, UseGuards} from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Get,
+  Param,
+  Delete,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
 import { UserService } from '../service/user.service';
 import { User, UserRole } from '../models/user.interface';
 import { Observable, of } from 'rxjs';
@@ -12,65 +21,67 @@ import path = require('path');
 import { UserIsUserGuard } from 'src/auth/guards/UserIsUser.guard';
 
 export const storage = {
-    storage: diskStorage({
-        destination: './uploads/profileimages',
-        filename: (req, file, cb) => {
-            const filename: string = path.parse(file.originalname).name.replace(/\s/g, '') + uuidv4();
-            const extension: string = path.parse(file.originalname).ext;
+  storage: diskStorage({
+    destination: './uploads/profileimages',
+    filename: (req, file, cb) => {
+      const filename: string =
+        path.parse(file.originalname).name.replace(/\s/g, '') + uuidv4();
+      const extension: string = path.parse(file.originalname).ext;
 
-            cb(null, `${filename}${extension}`)
-        }
-    })
-
-}
+      cb(null, `${filename}${extension}`);
+    },
+  }),
+};
 
 @Controller('users')
 export class UserController {
+  constructor(private userService: UserService) {}
 
-    constructor(private userService: UserService) { }
+  @Post()
+  create(@Body() user: User): Observable<User | Object> {
+    return this.userService.create(user).pipe(
+      map((user: User) => user),
+      catchError(err => of({ error: err.message })),
+    );
+  }
 
-    @Post()
-    create(@Body() user: User): Observable<User | Object> {
-        return this.userService.create(user).pipe(
-            map((user: User) => user),
-            catchError(err => of({ error: err.message }))
-        );
-    }
+  @Post('login')
+  login(@Body() user: User): Observable<Object> {
+    return this.userService.login(user).pipe(
+      map((jwt: string) => {
+        return {
+          email: user.email,
+          access_token: jwt,
+        };
+      }),
+    );
+  }
 
-    @Post('login')
-    login(@Body() user: User): Observable<Object> {
-        return this.userService.login(user).pipe(
-            map((jwt: string) => {
-                return {
-                    email:  user.email,
-                    access_token: jwt };
-            })
-        )
-    }
+  @Get(':id')
+  findOne(@Param() params): Observable<User> {
+    return this.userService.findOne(params.id);
+  }
 
-    @Get(':id')
-    findOne(@Param() params): Observable<User> {
-        return this.userService.findOne(params.id);
-    }
+  @hasRoles(UserRole.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Delete(':id')
+  deleteOne(@Param('id') id: string): Observable<any> {
+    return this.userService.deleteOne(Number(id));
+  }
 
-    @hasRoles(UserRole.ADMIN)
-    @UseGuards(JwtAuthGuard, RolesGuard)
-    @Delete(':id')
-    deleteOne(@Param('id') id: string): Observable<any> {
-        return this.userService.deleteOne(Number(id));
-    }
+  @UseGuards(JwtAuthGuard, UserIsUserGuard)
+  @Put(':id')
+  updateOne(@Param('id') id: string, @Body() user: User): Observable<any> {
+    return this.userService.updateOne(Number(id), user);
+  }
 
-    @UseGuards(JwtAuthGuard, UserIsUserGuard)
-    @Put(':id')
-    updateOne(@Param('id') id: string, @Body() user: User): Observable<any> {
-        return this.userService.updateOne(Number(id), user);
-    }
-
-    @hasRoles(UserRole.ADMIN)
-    @UseGuards(JwtAuthGuard, RolesGuard)
-    @Put(':id/role')
-    updateRoleOfUser(@Param('id') id: string, @Body() user: User): Observable<User> {
-        return this.userService.updateRoleOfUser(Number(id), user);
-    }
-
+  @hasRoles(UserRole.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Put(':id/role')
+  updateRoleOfUser(
+    @Param('id') id: string,
+    @Body() user: User,
+  ): Observable<User> {
+    return this.userService.updateRoleOfUser(Number(id), user);
+  }
 }

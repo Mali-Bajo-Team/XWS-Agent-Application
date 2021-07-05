@@ -13,10 +13,10 @@ export async function deleteProduct(id, jwt) {
 			})
 			.then((response) => {
 				resolve(response.data);
-				successToast('Sucess created new product!');
+				successToast('Sucess delete !');
 			})
 			.catch(() => {
-				errorToast('Error, your fields have mistakes!');
+				errorToast('Error durring deleting product!');
 			});
 	});
 }
