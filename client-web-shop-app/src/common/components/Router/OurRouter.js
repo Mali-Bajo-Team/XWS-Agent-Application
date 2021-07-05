@@ -8,6 +8,7 @@ import SignUp from '../../../modules/Auth/components/organisms/SignUp/SignUp';
 import Login from '../../../modules/Auth/components/organisms/Login/Login';
 import UserContextProvider from '../../../modules/Auth/context/UserContext';
 import ProductsContextProvider from '../../../modules/Product/context/ProductsContext';
+import ShoopingCartContextProvider from '../../../modules/ShopingCart/context/ShoppingCartContext';
 import './OurRouter.modules.css';
 import EditProduct from '../../../modules/Product/components/molecules/EditProduct/EditProduct';
 import ShopingCart from '../../../modules/ShopingCart/ShopingCart';
@@ -18,35 +19,37 @@ const OurRouter = () => {
 			<div className="App">
 				<UserContextProvider>
 					<ProductsContextProvider>
-						<Navbar />
-						<div className="content">
-							<Switch>
-								<Route exact path="/">
-									<Home />
-								</Route>
-								<Route exact path="/products">
-									<Products />
-								</Route>
-								<Route exact path="/products/create">
-									<CreateProduct />
-								</Route>
-								<Route exact path="/products/edit">
-									<EditProduct />
-								</Route>
-								<Route path="/products/:id">
-									<ProductDetails />
-								</Route>
-								<Route exact path="/cart">
-									<ShopingCart />
-								</Route>
-								<Route path="/signup">
-									<SignUp />
-								</Route>
-								<Route path="/login">
-									<Login />
-								</Route>
-							</Switch>
-						</div>
+						<ShoopingCartContextProvider>
+							<Navbar />
+							<div className="content">
+								<Switch>
+									<Route exact path="/">
+										<Home />
+									</Route>
+									<Route exact path="/products">
+										<Products />
+									</Route>
+									<Route exact path="/products/create">
+										<CreateProduct />
+									</Route>
+									<Route exact path="/products/edit">
+										<EditProduct />
+									</Route>
+									<Route path="/products/:id">
+										<ProductDetails />
+									</Route>
+									<Route exact path="/cart">
+										<ShopingCart />
+									</Route>
+									<Route path="/signup">
+										<SignUp />
+									</Route>
+									<Route path="/login">
+										<Login />
+									</Route>
+								</Switch>
+							</div>
+						</ShoopingCartContextProvider>
 					</ProductsContextProvider>
 				</UserContextProvider>
 			</div>
