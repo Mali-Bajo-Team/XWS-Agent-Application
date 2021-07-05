@@ -15,7 +15,6 @@ const ProductsContextProvider = ({ children }) => {
 	);
 	useEffect(() => {
 		setProducts(fetchedProducts);
-		localStorage.setItem('products', JSON.stringify(fetchedProducts));
 	}, [fetchedProducts]);
 
 	return (
