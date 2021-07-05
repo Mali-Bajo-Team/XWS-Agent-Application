@@ -4,7 +4,7 @@ import './CreateProduct.modules.css';
 const CreateProduct = () => {
 	const [name, setName] = useState('');
 	const [price, setPrice] = useState('');
-	const [availability, setAvailability] = useState('');
+	const [available, setAvailable] = useState('');
 	return (
 		<div className="newProductForm">
 			<h2>Hello adminstrator, add a new product.</h2>
@@ -23,12 +23,12 @@ const CreateProduct = () => {
 					value={price}
 					onChange={(e) => setPrice(e.target.value)}
 				/>
-				<label> Availability: </label>
+				<label> Available: </label>
 				<input
 					type="number"
 					required
-					value={availability}
-					onChange={(e) => setAvailability(e.target.value)}
+					value={available}
+					onChange={(e) => setAvailable(e.target.value)}
 				/>
 				<div className="buttonsSection">
 					<button

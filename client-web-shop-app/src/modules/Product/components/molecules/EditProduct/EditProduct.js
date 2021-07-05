@@ -6,7 +6,7 @@ const EditProduct = () => {
 
 	const [name, setName] = useState(state.name);
 	const [price, setPrice] = useState(state.price);
-	const [availability, setAvailability] = useState(state.availability);
+	const [available, setAvailable] = useState(state.available);
 	return (
 		<div className="newProductForm">
 			{console.log(state)}
@@ -27,12 +27,12 @@ const EditProduct = () => {
 					value={price}
 					onChange={(e) => setPrice(e.target.value)}
 				/>
-				<label> Availability: </label>
+				<label> Available: </label>
 				<input
 					type="number"
 					required
-					value={availability}
-					onChange={(e) => setAvailability(e.target.value)}
+					value={available}
+					onChange={(e) => setAvailable(e.target.value)}
 				/>
 				<div className="buttonsSection">
 					<button
