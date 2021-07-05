@@ -42,8 +42,9 @@ const CreateProduct = () => {
 							e.preventDefault();
 							var newProduct = await createNewProduct(name, price, available);
 							setProducts([...products, newProduct]);
-							console.log(newProduct);
-							console.log('create product simulation');
+							setName('');
+							setPrice('');
+							setAvailable('');
 						}}
 					>
 						CREATE
