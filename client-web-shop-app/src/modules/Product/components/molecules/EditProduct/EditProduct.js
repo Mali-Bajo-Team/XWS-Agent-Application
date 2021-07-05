@@ -1,8 +1,14 @@
 import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import { UserContext } from '../../../../Auth/context/UserContext';
+import { editProduct } from '../../../service/editProduct';
+import { ProductsContext } from '../../../context/ProductsContext';
 
 const EditProduct = () => {
 	const { state } = useLocation();
+	const { user } = useContext(UserContext);
+	const { products, setProducts } = useContext(ProductsContext);
 
 	const [name, setName] = useState(state.name);
 	const [price, setPrice] = useState(state.price);
@@ -37,15 +43,31 @@ const EditProduct = () => {
 				<div className="buttonsSection">
 					<button
 						className="createProductBtn"
-						onClick={(e) => {
+						onClick={async (e) => {
 							e.preventDefault();
-							console.log('create product simulation');
+							var changedProduct = await editProduct(
+								state.id,
+								name,
+								price,
+								available,
+								user.jwt
+							);
+							let tempProducts = [];
+							products.forEach((product) => {
+								if (product.id !== state.id) {
+									tempProducts.push(product);
+								} else {
+									tempProducts.push(changedProduct);
+								}
+							});
+							setProducts(tempProducts);
 						}}
 					>
 						CONFIRM
 					</button>
 				</div>
 			</form>
+			<ToastContainer />
 		</div>
 	);
 };
