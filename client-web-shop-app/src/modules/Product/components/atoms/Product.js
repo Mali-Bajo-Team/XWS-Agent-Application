@@ -9,7 +9,7 @@ import { ShoopingCartContext } from '../../../ShopingCart/context/ShoppingCartCo
 import { successToast } from '../../../../common/toasts/success';
 import { warningToast } from '../../../../common/toasts/warning';
 
-const Product = ({ product }) => {
+const Product = ({ product, disableAddToCart }) => {
 	const { user } = useContext(UserContext);
 	const { products, setProducts } = useContext(ProductsContext);
 	const { shoopingCart, setShoopingCart } = useContext(ShoopingCartContext);
@@ -53,13 +53,13 @@ const Product = ({ product }) => {
 					/* just to move button to the right */
 					user.role === 'user' ? <div></div> : ''
 				}
-				{user.role === 'user' ? (
+				{user.role === 'user' && !disableAddToCart ? (
 					<button
 						onClick={(e) => {
 							e.preventDefault();
 							// unique element add to arraay
 							let added = shoopingCart.indexOf(product);
-							product.quantityToBuy = 0;
+							product.quantityToBuy = 1;
 							added === -1
 								? setShoopingCart([...shoopingCart, product])
 								: warningToast(

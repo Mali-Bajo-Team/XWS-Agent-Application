@@ -1,9 +1,3 @@
-/* .shoppingCartForm {
-	max-width: 400px;
-	margin: 0 auto;
-	text-align: center;
-} */
-
 label {
 	text-align: left;
 	display: block;
@@ -26,4 +20,19 @@ select {
 	display: block;
 	border-radius: 0.7em;
 	height: 3.3em;
+}
+
+/* confirm buy */
+
+.confirmBuy {
+	text-align: center;
+}
+
+.confirmBuy button {
+	background: #22ad9a;
+	color: #fff;
+	border: 0;
+	padding: 0.9em;
+	border-radius: 2em;
+	cursor: pointer;
 }
