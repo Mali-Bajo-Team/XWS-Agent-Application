@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import { ProductsContext } from '../../context/ProductsContext';
 import { ShoopingCartContext } from '../../../ShopingCart/context/ShoppingCartContext';
 import { successToast } from '../../../../common/toasts/success';
+import { warningToast } from '../../../../common/toasts/warning';
 
 const Product = ({ product }) => {
 	const { user } = useContext(UserContext);
@@ -56,8 +57,16 @@ const Product = ({ product }) => {
 					<button
 						onClick={(e) => {
 							e.preventDefault();
-							setShoopingCart([...shoopingCart, product]);
-							successToast('Sucess added a product to the shopping cart!');
+							// unique element add to arraay
+							let added = shoopingCart.indexOf(product);
+							added === -1
+								? setShoopingCart([...shoopingCart, product])
+								: warningToast(
+										'Warning, already added a item to the shopping cart'
+								  );
+							if (added === -1) {
+								successToast('Sucess added a product to the shopping cart!');
+							}
 						}}
 					>
 						+
