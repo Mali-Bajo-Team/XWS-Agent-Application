@@ -1,0 +1,29 @@
+/* .shoppingCartForm {
+	max-width: 400px;
+	margin: 0 auto;
+	text-align: center;
+} */
+
+label {
+	text-align: left;
+	display: block;
+}
+
+h2 {
+	font-size: 20px;
+	color: #22ad9a;
+	margin-bottom: 30px;
+}
+
+input,
+textarea,
+select {
+	width: 100%;
+	padding: 6px 10px;
+	margin: 10px 0;
+	border: 1px solid #ddd;
+	box-sizing: border-box;
+	display: block;
+	border-radius: 0.7em;
+	height: 3.3em;
+}

@@ -59,6 +59,7 @@ const Product = ({ product }) => {
 							e.preventDefault();
 							// unique element add to arraay
 							let added = shoopingCart.indexOf(product);
+							product.quantityToBuy = 0;
 							added === -1
 								? setShoopingCart([...shoopingCart, product])
 								: warningToast(

@@ -11,7 +11,7 @@ import ProductsContextProvider from '../../../modules/Product/context/ProductsCo
 import ShoopingCartContextProvider from '../../../modules/ShopingCart/context/ShoppingCartContext';
 import './OurRouter.modules.css';
 import EditProduct from '../../../modules/Product/components/molecules/EditProduct/EditProduct';
-import ShopingCart from '../../../modules/ShopingCart/ShopingCart';
+import ShopingCart from '../../../modules/ShopingCart/ShoppingCartScreen';
 
 const OurRouter = () => {
 	return (
