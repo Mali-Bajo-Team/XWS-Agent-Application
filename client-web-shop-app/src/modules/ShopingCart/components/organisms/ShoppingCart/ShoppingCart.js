@@ -6,10 +6,13 @@ import { ToastContainer } from 'react-toastify';
 import { warningToast } from '../../../../../common/toasts/warning';
 import { successToast } from '../../../../../common/toasts/success';
 import { UserContext } from '../../../../Auth/context/UserContext';
+import { ProductsContext } from '../../../../Product/context/ProductsContext';
+import { editProduct } from '../../../../Product/service/editProduct';
 
 const ShoppingCart = () => {
 	const { user } = useContext(UserContext);
 	const { shoopingCart, setShoopingCart } = useContext(ShoopingCartContext);
+	const { products, setProducts } = useContext(ProductsContext);
 	function updateShoppingCart(product, newValue) {
 		console.log('id: ' + product.id + ' value: ' + newValue);
 		shoopingCart.forEach((element) => {
@@ -53,7 +56,7 @@ const ShoppingCart = () => {
 				<div>
 					<h2> Dear {user.name}, fill in other order details !</h2>
 					<form>
-						<label>city:</label>
+						<label>City:</label>
 						<input
 							type="text"
 							required
@@ -80,7 +83,7 @@ const ShoppingCart = () => {
 
 						<div className="confirmBuy">
 							<button
-								onClick={(e) => {
+								onClick={async (e) => {
 									e.preventDefault();
 									console.log('test');
 									if (city === '' || street === '' || number === '') {
@@ -88,6 +91,29 @@ const ShoppingCart = () => {
 										return;
 									}
 									setShoopingCart([]);
+
+									// for every just bought product, update avaiable state on db
+									shoopingCart.forEach(async (shoppingProduct) => {
+										// update db
+										var changedProduct = await editProduct(
+											shoppingProduct.id,
+											shoppingProduct.name,
+											shoppingProduct.price,
+											shoppingProduct.available - shoppingProduct.quantityToBuy,
+											user.jwt,
+											false
+										);
+										// update context
+										let tempProducts = [];
+										products.forEach((product) => {
+											if (product.id !== shoppingProduct.id) {
+												tempProducts.push(product);
+											} else {
+												tempProducts.push(changedProduct);
+											}
+										});
+										setProducts(tempProducts);
+									});
 
 									successToast(
 										'Well done, you will get a product in a next 7 day !'

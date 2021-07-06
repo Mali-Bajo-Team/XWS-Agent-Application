@@ -3,7 +3,14 @@ import { successToast } from '../../../common/toasts/success';
 
 const axios = require('axios');
 
-export async function editProduct(id, name, price, available, jwt) {
+export async function editProduct(
+	id,
+	name,
+	price,
+	available,
+	jwt,
+	showToast = true
+) {
 	return new Promise(function (resolve, reject) {
 		axios
 			.put(
@@ -21,7 +28,9 @@ export async function editProduct(id, name, price, available, jwt) {
 			)
 			.then((response) => {
 				resolve(response.data);
-				successToast('Sucess changed a product!');
+				if (showToast) {
+					successToast('Sucess changed a product!');
+				}
 			})
 			.catch(() => {
 				errorToast('Error, your fields have mistakes!');

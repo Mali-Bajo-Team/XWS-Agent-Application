@@ -39,8 +39,6 @@ export class ProductController {
     return this.productService.findAll();
   }
 
-  @hasRoles(UserRole.ADMIN)
-  @UseGuards(JwtAuthGuard, RolesGuard)
   @Put(':id')
   updateOne(
     @Param('id') id: string,
