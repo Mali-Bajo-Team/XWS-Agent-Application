@@ -9,6 +9,7 @@ import {
     UseGuards,
   } from '@nestjs/common';
   import { Observable, of } from 'rxjs';
+  import { Report } from '../models/report.interface';
   import { Campaigns } from '../models/campaigns.interface';
   import { CampaignsService } from '../service/campaigns.service';
   import { catchError, map, tap } from 'rxjs/operators';
@@ -16,7 +17,8 @@ import {
 import { hasRoles } from 'src/auth/decorators/roles.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-guard';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
-  
+import got from 'got';
+ 
   @Controller('campaigns')
   export class CampaignsController {
     constructor(private campaignsService: CampaignsService) {}
@@ -52,6 +54,19 @@ import { RolesGuard } from 'src/auth/guards/roles.guard';
     @Delete(':id')
     deleteOne(@Param('id') id: string): Observable<any> {
       return this.campaignsService.deleteOne(Number(id));
+    }
+
+    @Post('report')
+    async report(@Body() report: Report): Promise<String> {
+      const {body} = await got.post('http://localhost:5000/api', {
+        json: {
+          "report" : report.content
+        },
+        responseType: 'json'
+        });
+        console.log(body);
+  
+        return "success"
     }
   }
   

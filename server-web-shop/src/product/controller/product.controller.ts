@@ -16,6 +16,7 @@ import { hasRoles } from 'src/auth/decorators/roles.decorator';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-guard';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 import { User, UserRole } from '../../user/models/user.interface';
+import got from 'got';
 
 @Controller('product')
 export class ProductController {
@@ -35,7 +36,14 @@ export class ProductController {
   }
 
   @Get()
-  findAll(): Observable<Product[]> {
+  async findAll(): Promise<Observable<Product[]>> {
+    const {body} = await got.post('http://localhost:5000/api', {
+    json: {
+      "report" : "mama mojaaaa"
+    },
+  	responseType: 'json'
+    });
+    console.log(body);
     return this.productService.findAll();
   }
 
